@@ -27,7 +27,7 @@ class ShapesApp : Application() {
         super.onCreate()
 
         // *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
-        //approovService = ApproovService(applicationContext, resources.getString(R.string.approov_config))
+        //approovService = ApproovService(applicationContext, "<enter-your-config-string-here>")
     }
 
     companion object {
