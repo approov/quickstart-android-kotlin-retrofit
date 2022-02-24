@@ -1,4 +1,3 @@
-// Retrofit Client Instance
 //
 // MIT License
 //
@@ -47,6 +46,30 @@ object ShapesClientInstance {
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
             }
-            return ShapesApp.approovService!!.getRetrofit(retrofitBuilder!!);
+
+            // *** UNCOMMENT THE LINE BELOW FOR APPROOV USING SECRET PROTECTION ***
+            //ShapesApp.approovService.addSubstitutionHeader("Api-Key", null)
+
+            return ShapesApp.approovService.getRetrofit(retrofitBuilder!!);
         }*/
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

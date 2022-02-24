@@ -1,4 +1,3 @@
-// Main activity for Approov Shapes App Demo (using Retrofit)
 //
 // MIT License
 //
@@ -30,12 +29,12 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : Activity() {
-    private var activity: Activity? = null
-    private var statusView: View? = null
-    private var statusImageView: ImageView? = null
-    private var statusTextView: TextView? = null
-    private var connectivityCheckButton: Button? = null
-    private var shapesCheckButton: Button? = null
+    private lateinit var activity: Activity
+    private lateinit var statusView: View
+    private lateinit var statusImageView: ImageView
+    private lateinit var statusTextView: TextView
+    private lateinit var helloCheckButton: Button
+    private lateinit var shapesCheckButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -45,57 +44,60 @@ class MainActivity : Activity() {
         statusView = findViewById(R.id.viewStatus)
         statusImageView = findViewById<View>(R.id.imgStatus) as ImageView
         statusTextView = findViewById(R.id.txtStatus)
-        connectivityCheckButton = findViewById(R.id.btnConnectionCheck)
+        helloCheckButton = findViewById(R.id.btnConnectionCheck)
         shapesCheckButton = findViewById(R.id.btnShapesCheck)
 
-        // handle connection check
-        connectivityCheckButton!!.setOnClickListener(View.OnClickListener {
+        // handle hello connection check
+        helloCheckButton.setOnClickListener(View.OnClickListener {
             // hide status
-            activity!!.runOnUiThread(Runnable { statusView!!.setVisibility(View.INVISIBLE) })
+            activity.runOnUiThread(Runnable { statusView.setVisibility(View.INVISIBLE) })
             // Make a Retrofit request to get hello text
             val service = retrofitInstance!!.create(ShapesService::class.java)
             val call = service.hello
-            call!!.enqueue(object : Callback<HelloModel?> {
+            call.enqueue(object : Callback<HelloModel?> {
                 override fun onResponse(call: Call<HelloModel?>, response: Response<HelloModel?>) {
                     val imgId: Int
                     var message = "Http status code " + response.code()
                     if (response.isSuccessful) {
-                        Log.d(TAG, "Connectivity call successful")
+                        Log.d(TAG, "Hello call successful")
                         imgId = R.drawable.hello
                         message = response.body()!!.text
                     } else {
-                        Log.d(TAG, "Connectivity call unsuccessful")
+                        Log.d(TAG, "Hello call unsuccessful")
                         imgId = R.drawable.confused
                     }
                     val msg = message
-                    activity!!.runOnUiThread(Runnable {
-                        statusImageView!!.setImageResource(imgId)
-                        statusTextView!!.setText(msg)
-                        statusView!!.setVisibility(View.VISIBLE)
+                    activity.runOnUiThread(Runnable {
+                        statusImageView.setImageResource(imgId)
+                        statusTextView.setText(msg)
+                        statusView.setVisibility(View.VISIBLE)
                     })
                 }
 
                 override fun onFailure(call: Call<HelloModel?>, t: Throwable) {
-                    Log.d(TAG, "Connectivity call failed")
+                    Log.d(TAG, "Hello call failed: " + t.message)
                     val imgId = R.drawable.confused
                     val msg = "Request failed: " + t.message
-                    activity!!.runOnUiThread(Runnable {
-                        statusImageView!!.setImageResource(imgId)
-                        statusTextView!!.setText(msg)
-                        statusView!!.setVisibility(View.VISIBLE)
+                    activity.runOnUiThread(Runnable {
+                        statusImageView.setImageResource(imgId)
+                        statusTextView.setText(msg)
+                        statusView.setVisibility(View.VISIBLE)
                     })
                 }
             })
         })
 
         // handle getting shapes
-        shapesCheckButton!!.setOnClickListener(View.OnClickListener {
+        shapesCheckButton.setOnClickListener(View.OnClickListener {
             // hide status
-            activity!!.runOnUiThread(Runnable { statusView!!.setVisibility(View.INVISIBLE) })
+            activity.runOnUiThread(Runnable { statusView.setVisibility(View.INVISIBLE) })
             // Make a Retrofit request to get a shape
             val service = retrofitInstance!!.create(ShapesService::class.java)
-            val call = service.shape
-            call!!.enqueue(object : Callback<ShapeModel?> {
+            val headers: MutableMap<String, String> = HashMap()
+            val apiKey = resources.getString(R.string.shapes_api_key)
+            headers["Api-Key"] = apiKey
+            val call = service.getShape(headers)
+            call.enqueue(object : Callback<ShapeModel> {
                 override fun onResponse(call: Call<ShapeModel?>, response: Response<ShapeModel?>) {
                     var imgId = R.drawable.confused
                     val msg = "Http status code " + response.code()
@@ -115,21 +117,21 @@ class MainActivity : Activity() {
                         Log.d(TAG, "Shapes call unsuccessful")
                     }
                     val finalImgId = imgId
-                    activity!!.runOnUiThread(Runnable {
-                        statusImageView!!.setImageResource(finalImgId)
-                        statusTextView!!.setText(msg)
-                        statusView!!.setVisibility(View.VISIBLE)
+                    activity.runOnUiThread(Runnable {
+                        statusImageView.setImageResource(finalImgId)
+                        statusTextView.setText(msg)
+                        statusView.setVisibility(View.VISIBLE)
                     })
                 }
 
                 override fun onFailure(call: Call<ShapeModel?>, t: Throwable) {
-                    Log.d(TAG, "Shapes call failed")
+                    Log.d(TAG, "Shapes call failed: " + t.message)
                     val imgId = R.drawable.confused
                     val msg = "Request failed: " + t.message
-                    activity!!.runOnUiThread(Runnable {
-                        statusImageView!!.setImageResource(imgId)
-                        statusTextView!!.setText(msg)
-                        statusView!!.setVisibility(View.VISIBLE)
+                    activity.runOnUiThread(Runnable {
+                        statusImageView.setImageResource(imgId)
+                        statusTextView.setText(msg)
+                        statusView.setVisibility(View.VISIBLE)
                     })
                 }
             })

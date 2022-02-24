@@ -1,4 +1,3 @@
-// Retrofit Service Interface for Shapes
 //
 // MIT License
 //
@@ -19,11 +18,24 @@ package io.approov.shapes
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.HeaderMap
 
 interface ShapesService {
-    @get:GET("/v2/shapes")
-    val shape: Call<ShapeModel?>?
+    // *** COMMENT THE LINES BELOW WHEN USING APPROOV WITH TOKEN PROTECTION ***
+    @GET("/v1/shapes")
+    // *** UNCOMMENT THE LINES BELOW WHEN USING APPROOV WITH TOKEN PROTECTION ***
+    //@GET("/v3/shapes")
+    fun getShape(@HeaderMap headers: Map<String, String>): Call<ShapeModel>
 
     @get:GET("/v1/hello")
-    val hello: Call<HelloModel?>?
+    val hello: Call<HelloModel>
 }
+
+
+
+
+
+
+
+
+
