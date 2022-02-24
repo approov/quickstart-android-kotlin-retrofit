@@ -5,7 +5,7 @@ This quickstart is written specifically for native Android apps that are written
 ## WHAT YOU WILL NEED
 * Access to a trial or paid Approov account
 * The `approov` command line tool [installed](https://approov.io/docs/latest/approov-installation/) with access to your account
-* [Android Studio](https://developer.android.com/studio) installed (version 4.1.2 is used in this guide)
+* [Android Studio](https://developer.android.com/studio) installed (Android Studio Bumblebee 2021.1.1 is used in this guide)
 * The contents of this repo
 
 ## RUNNING THE SHAPES APP WITHOUT APPROOV
