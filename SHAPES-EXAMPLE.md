@@ -26,10 +26,10 @@ Click on the `Say Hello` button and you should see this:
     <img src="readme-images/hello-okay.png" width="256" title="Hello Okay">
 </p>
 
-This checks the connectivity by connecting to the endpoint `https://shapes.approov.io/v1/hello`. Now press the `Get Shape` button and you will see this:
+This checks the connectivity by connecting to the endpoint `https://shapes.approov.io/v1/hello`. Now press the `Get Shape` button and you will see this (or another shape):
 
 <p>
-    <img src="readme-images/shapes-bad.png" width="256" title="Shapes Bad">
+    <img src="readme-images/shapes-good.png" width="256" title="Shapes Bad">
 </p>
 
 This contacts `https://shapes.approov.io/v2/shapes` to get the name of a random shape. It gets the status code 400 (`Bad Request`) because this endpoint is protected with an Approov token. Next, you will add Approov into the app so that it can generate valid Approov tokens and get shapes.
@@ -60,7 +60,7 @@ Note that `approov-service-retrofit` is actually an open source wrapper layer th
 
 ## ENSURE THE SHAPES API IS ADDED
 
-In order for Approov tokens to be generated for `https://shapes.approov.io/v2/shapes` it is necessary to inform Approov about it:
+In order for Approov tokens to be generated for `shapes.approov.io` it is necessary to inform Approov about it:
 ```
 approov api -add shapes.approov.io
 ```
