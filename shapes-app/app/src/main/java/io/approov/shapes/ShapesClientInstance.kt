@@ -19,6 +19,9 @@ package io.approov.shapes
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+// *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
+//import io.approov.service.retrofit.ApproovService
+
 object ShapesClientInstance {
     private const val BASE_URL = "https://shapes.approov.io/"
 
@@ -48,9 +51,9 @@ object ShapesClientInstance {
             }
 
             // *** UNCOMMENT THE LINE BELOW FOR APPROOV USING SECRET PROTECTION ***
-            //ShapesApp.approovService.addSubstitutionHeader("Api-Key", null)
+            //ApproovService.addSubstitutionHeader("Api-Key", null)
 
-            return ShapesApp.approovService.getRetrofit(retrofitBuilder!!);
+            return ApproovService.getRetrofit(retrofitBuilder!!);
         }*/
 }
 

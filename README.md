@@ -25,7 +25,7 @@ Secondly, add the dependency in your app's `build.gradle`:
 
 ```
 dependencies {
-	implementation 'com.github.approov:approov-service-retrofit:3.0.3'
+	implementation 'com.github.approov:approov-service-retrofit:3.0.5'
 }
 ```
 
@@ -45,7 +45,7 @@ The following app permissions need to be available in the manifest to use Approo
 
 Note that the minimum SDK version you can use with the Approov package is 21 (Android 5.0). 
 
-Please [read this](https://approov.io/docs/latest/approov-usage-documentation/#targetting-android-11-and-above) section of the reference documentation if targetting Android 11 (API level 30) or above.
+Please [read this](https://approov.io/docs/latest/approov-usage-documentation/#targeting-android-11-and-above) section of the reference documentation if targeting Android 11 (API level 30) or above.
 
 ## INITIALIZING APPROOV SERVICE
 In order to use the `ApproovService` you must initialize it when your app is created, usually in the `onCreate` method:
@@ -56,7 +56,7 @@ import io.approov.service.retrofit.ApproovService
 class YourApp: Application() {
     override fun onCreate() {
         super.onCreate()
-        approovService = ApproovService(applicationContext, "<enter-your-config-string-here>")
+        ApproovService.initialize(applicationContext, "<enter-your-config-string-here>")
     }
 
     companion object {
@@ -66,8 +66,6 @@ class YourApp: Application() {
 ```
 
 The `<enter-your-config-string-here>` is a custom string that configures your Approov account access. This will have been provided in your Approov onboarding email.
-
-This initializes Approov when the app is first created. A companion object allows other parts of the app to access the singleton Approov instance. All calls to `ApproovService` and the SDK itself are thread safe.
 
 It is possible to pass an empty string to indicate that no initialization is required. Only do this if you are also using a different Approov quickstart in your app (which will use the same underlying Approov SDK) and this will have been initialized first.
 
@@ -85,7 +83,7 @@ object ClientInstance {
                         .baseUrl(BASE_URL)
                         .addConverterFactory(GsonConverterFactory.create())
             }
-            return YourApp.approovService.getRetrofit(retrofitBuilder!!)
+            return ApproovService.getRetrofit(retrofitBuilder!!)
         }
 }
 ```
@@ -104,12 +102,12 @@ val retrofit = retrofit2.Retrofit.Builder().baseUrl("https://your.domain/").clie
 Pass the modified `OkHttp.Builder` to the `ApproovService` as follows:
 
 ```kotlin
-YourApp.approovService.setOkHttpClientBuilder(OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS))
+ApproovService.setOkHttpClientBuilder(OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS))
 val retrofitBuilder = retrofit2.Retrofit.Builder().baseUrl("https://your.domain/")
-val retrofit = YourApp.approovService.getRetrofit(retrofitBuilder)
+val retrofit = ApproovService.getRetrofit(retrofitBuilder)
 ```
 
-This call to `setOkHttpClientBuilder` only needs to be made once. Subsequent calls to `YourApp.approovService.getRetrofit()` will then always a `OkHttpClient` with the builder values included.
+This call to `setOkHttpClientBuilder` only needs to be made once. Subsequent calls to `ApproovService.getRetrofit()` will then always a `OkHttpClient` with the builder values included.
 
 ## CHECKING IT WORKS
 Initially you won't have set which API domains to protect, so the interceptor will not add anything. It will have called Approov though and made contact with the Approov cloud service. You will see logging from Approov saying `UNKNOWN_URL`.
@@ -124,3 +122,6 @@ To actually protect your APIs there are some further steps. Approov provides two
 * [SECRET PROTECTION](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/SECRET-PROTECTION.md): If you do not control the backend API(s) being protected, and are therefore unable to modify it to check Approov tokens, you can use this approach instead. It allows app secrets, and API keys, to be protected so that they no longer need to be included in the built code and are only made available to passing apps at runtime.
 
 Note that it is possible to use both approaches side-by-side in the same app, in case your app uses a mixture of 1st and 3rd party APIs.
+
+See [REFERENCE](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/REFERENCE.md) for a complete list of all of the `ApproovService` methods.
+

@@ -26,11 +26,6 @@ class ShapesApp: Application() {
         super.onCreate()
 
         // *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
-        //approovService = ApproovService(applicationContext, "<enter-your-config-string-here>")
-    }
-
-    companion object {
-        // *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
-        //lateinit var approovService: ApproovService
+        //ApproovService.initialize(applicationContext, "<enter-your-config-string-here>")
     }
 }
