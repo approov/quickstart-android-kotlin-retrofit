@@ -58,10 +58,6 @@ class YourApp: Application() {
         super.onCreate()
         ApproovService.initialize(applicationContext, "<enter-your-config-string-here>")
     }
-
-    companion object {
-        lateinit var approovService: ApproovService
-    }
 }
 ```
 
