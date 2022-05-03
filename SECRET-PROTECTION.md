@@ -153,15 +153,6 @@ ApproovService.prefetch()
 
 This initiates the process of fetching the required information as a background task, so that it is available immediately when subsequently needed. Note the information will automatically expire after approximately 5 minutes.
 
-### Prefetching
-If you wish to reduce the latency associated with substituting the first secret, then make this call immediately after creating `ApproovService`:
-
-```kotlin
-ApproovService.prefetch()
-```
-
-This initiates the process of fetching the required information as a background task, so that it is available immediately when subsequently needed. Note the information will automatically expire after approximately 5 minutes.
-
 ### Prechecking
 You may wish to do an early check in your to present a warning to the user if the app is not going to be able to access secrets because it fails the attestation process. Here is an example of calling the appropriate method in `ApproovService`:
 
