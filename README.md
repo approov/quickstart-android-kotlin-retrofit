@@ -8,12 +8,7 @@ To follow this guide you should have received an onboarding email for a trial or
 
 ## ADDING APPROOV SERVICE DEPENDENCY
 The Approov integration is available via [`maven`](https://mvnrepository.com/repos/central). This allows inclusion into the project by simply specifying a dependency in the `gradle` files for the app.
-
-The `approov-service-retrofit` dependency needs to be added as follows to the `app/build.gradle:38` at the app level:
-
-![App Build Gradle](readme-images/app-gradle.png)
-
-The Maven dependency reference is:
+The `Maven` repository is already present in the gradle.build file so the only import you need to make is the actual service layer itself:
 
 ```
 implementation("io.approov:service.retrofit:3.3.0")
@@ -24,6 +19,7 @@ Make sure you do a Gradle sync (by selecting `Sync Now` in the banner at the top
 This package is actually an open source wrapper layer that allows you to easily use Approov with `Retrofit`. This has a further dependency to the closed source [Approov SDK](https://github.com/approov/approov-android-sdk).
 
 Make sure you do a Gradle sync (by selecting `Sync Now` in the banner at the top of the modified `.gradle` file) after making these changes.
+
 
 ## MANIFEST CHANGES
 The following app permissions need to be available in the manifest to use Approov:
