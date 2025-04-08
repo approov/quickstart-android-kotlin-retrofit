@@ -14,7 +14,7 @@
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
 // ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 // THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package io.approov.shapes
+package io.approov.shapes.kotlin_retrofit
 
 import android.app.Activity
 import android.os.Bundle
@@ -23,7 +23,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import io.approov.shapes.ShapesClientInstance.retrofitInstance
+import io.approov.shapes.kotlin_retrofit.ShapesClientInstance.retrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

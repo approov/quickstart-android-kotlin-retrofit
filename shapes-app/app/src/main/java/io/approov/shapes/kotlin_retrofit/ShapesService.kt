@@ -14,7 +14,7 @@
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
 // ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 // THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package io.approov.shapes
+package io.approov.shapes.kotlin_retrofit
 
 import retrofit2.Call
 import retrofit2.http.GET
@@ -25,6 +25,8 @@ interface ShapesService {
     @GET("/v1/shapes")
     // *** UNCOMMENT THE LINES BELOW WHEN USING APPROOV WITH API PROTECTION ***
     //@GET("/v3/shapes")
+    // *** UNCOMMENT THE LINES BELOW WHEN USING APPROOV WITH INSTALLATION MESSAGE SIGNING ***
+    //@GET("/v5/shapes")
     fun getShape(@HeaderMap headers: Map<String, String>): Call<ShapeModel>
 
     @get:GET("/v1/hello")

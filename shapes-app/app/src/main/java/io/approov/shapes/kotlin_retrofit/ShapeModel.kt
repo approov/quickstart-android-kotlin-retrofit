@@ -14,8 +14,8 @@
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
 // ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 // THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package io.approov.shapes
+package io.approov.shapes.kotlin_retrofit
 
 import com.google.gson.annotations.SerializedName
 
-class HelloModel(@field:SerializedName("text") var text: String)
+class ShapeModel(@field:SerializedName("shape") var shape: String)
