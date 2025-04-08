@@ -124,13 +124,13 @@ If you still don't get a valid shape then there are some things you can try. Rem
 
 This section shows how to add message signing as an additional layer of protection in addition to an Approov token.
 
-1. Edit the `res/values/strings.xml` file to using the shapes `https://shapes.approov.io/v5/shapes/` endpoint. The v5 endpoint performs a message signature check in addition to the Approov token check.
+1. Edit the `ShapesService.kt` file to using the shapes `https://shapes.approov.io/v5/shapes/` endpoint. The v5 endpoint performs a message signature check in addition to the Approov token check.
 
 ![Shapes V5 Endpoint](readme-images/shapes-v5-endpoint.png)
 
-2. Uncomment the message signing setup code in `io/approov/shapes/ShapesApp.java`. This adds an interceptor extension to the ApproovService which adds the message signature to the request automatically.
+2. Uncomment the message signing setup code in `io/approov/shapes/ShapesApp.kt`. This adds an interceptor extension to the ApproovService which adds the message signature to the request automatically.
 
-![Approov Initialization](readme-images/approov-msgsign-setup-code.png)
+![Add Interceptor Extension](readme-images/approov-msgsign-setup-code.png)
 
 3. Configure Approov to add the public message signing key to the approov token. This key is used by the v5 endpoint to perform its message signature check.
 

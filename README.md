@@ -18,8 +18,6 @@ Make sure you do a Gradle sync (by selecting `Sync Now` in the banner at the top
 
 This package is actually an open source wrapper layer that allows you to easily use Approov with `Retrofit`. This has a further dependency to the closed source [Approov SDK](https://github.com/approov/approov-android-sdk).
 
-Make sure you do a Gradle sync (by selecting `Sync Now` in the banner at the top of the modified `.gradle` file) after making these changes.
-
 
 ## MANIFEST CHANGES
 The following app permissions need to be available in the manifest to use Approov:
@@ -102,7 +100,5 @@ To actually protect your APIs and/or secrets there are some further steps. Appro
 * [SECRETS PROTECTION](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/SECRETS-PROTECTION.md): This allows app secrets, including API keys for 3rd party services, to be protected so that they no longer need to be included in the released app code. These secrets are only made available to valid apps at runtime.
 
 Note that it is possible to use both approaches side-by-side in the same app.
-
-* [MESSAGE SIGNING](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/MESSAGE-SIGNING.md): You should use this if you would like to ensure strict message integrity between the client app and the backend API where this additional level of integrity assurance is required.
 
 See [REFERENCE](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/REFERENCE.md) for a complete list of all of the `ApproovService` methods.

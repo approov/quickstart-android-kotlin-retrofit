@@ -26,6 +26,9 @@ This ensures that any app signed with the certificate used on your development m
 
 See [Android App Signing Certificates](https://approov.io/docs/latest/approov-usage-documentation/#android-app-signing-certificates) if your keystore format is not recognized or if you have any issues adding the certificate. This also provides information about adding certificates for when releasing to the Play Store. Note also that you need to apply specific [Android Obfuscation](https://approov.io/docs/latest/approov-usage-documentation/#android-obfuscation) rules when creating an app release.
 
+## MESSAGE SIGNING
+Where this additional level of integrity assurance is required, you should use [message signing](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/MESSAGE-SIGNING.md) in addition to token verification to ensure strict message integrity between the client app and the backend API.
+
 ## FURTHER OPTIONS
 See [Exploring Other Approov Features](https://approov.io/docs/latest/approov-usage-documentation/#exploring-other-approov-features) for information about additional Approov features you may wish to try.
 

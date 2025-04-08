@@ -27,16 +27,16 @@ If you are using the `ApproovService` networking stack, then Approov can automat
 signature. You should use this method whenever possible. You enable this by making the following call once, after
 initialization:
 
-```java
+```kotlin
 ApproovService.setApproovInterceptorExtensions(
-    new ApproovDefaultMessageSigning()
+    ApproovDefaultMessageSigning()
         .setDefaultFactory(
             ApproovDefaultMessageSigning.generateDefaultSignatureParametersFactory()
         )
-);
+)
 ```
 
 With this interceptor extension in place the Approov networking interceptor computes the request message signature and 
 adds it to the request as required when the app passes attestation.
 
-You can see a [worked example](https://github.com/approov/quickstart-android-java-okhttp/blob/master/SHAPES-EXAMPLE.md#shapes-app-with-installation-message-signing) for the Shapes app.
+You can see a [worked example](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/SHAPES-EXAMPLE.md#shapes-app-with-installation-message-signing) for the Shapes app.
