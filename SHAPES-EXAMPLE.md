@@ -115,6 +115,7 @@ This means that the app is getting a validly signed Approov token to present to 
 If you still don't get a valid shape then there are some things you can try. Remember this may be because the device you are using has some characteristics that cause rejection for the currently set [Security Policy](https://approov.io/docs/latest/approov-usage-documentation/#security-policies) on your account:
 
 * Ensure that the version of the app you are running is signed with the correct certificate.
+* If you are running the app from a debugger then valid tokens are not issued.
 * Look at the [`logcat`](https://developer.android.com/studio/command-line/logcat) output from the device. Information about any Approov token fetched or an error is output at the `DEBUG` level. You can easily [check](https://approov.io/docs/latest/approov-usage-documentation/#loggable-tokens) the validity and find out any reason for a failure.
 * Use `approov metrics` to see [Live Metrics](https://approov.io/docs/latest/approov-usage-documentation/#metrics-graphs) of the cause of failure.
 * You can use a debugger or emulator and get valid Approov tokens on a specific device by ensuring you are [forcing a device ID to pass](https://approov.io/docs/latest/approov-usage-documentation/#forcing-a-device-id-to-pass). As a shortcut, you can use the `latest` as discussed so that the `device ID` doesn't need to be extracted from the logs or an Approov token.
@@ -152,7 +153,7 @@ This section provides an illustration of an alternative option for Approov prote
 
 ![Shapes V1 Endpoint](readme-images/shapes-v1-endpoint.png)
 
-Next, the `res/values/strings.xml` file needs to be changed with the `shapes_api_key` entry modified to `shapes_api_key_placeholder`. Tis removss the actual API key out of the code:
+Next, the `res/values/strings.xml` file needs to be changed with the `shapes_api_key` entry modified to `shapes_api_key_placeholder`. This removes the actual API key from the code:
 
 ![Placeholder API Key](readme-images/placeholder-api-key.png)
 

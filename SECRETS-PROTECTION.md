@@ -36,7 +36,7 @@ If the secret value needs to be provided on the header `your-header` then it is 
 ApproovService.addSubstitutionHeader("your-header", null)
 ```
 
-ith this in place the Approov networking interceptor should replace the `your-secret-name` with `your-secret-value` as required when the app passes attestation. Since the mapping lookup is performed on the secret name you have the flexibility of providing different secrets on different API calls, even if they are passed with the same header name.
+With this in place the Approov networking interceptor should replace the `your-secret-name` with `your-secret-value` as required when the app passes attestation. Since the mapping lookup is performed on the secret name you have the flexibility of providing different secrets on different API calls, even if they are passed with the same header name.
 
 You can see a [worked example](https://github.com/approov/quickstart-android-kotlin-retrofit/blob/master/SHAPES-EXAMPLE.md#shapes-app-with-secrets-protection) for the Shapes app.
 

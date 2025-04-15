@@ -35,6 +35,6 @@ class ShapesApp: Application() {
         //ApproovService.setApproovInterceptorExtensions(
         //        ApproovDefaultMessageSigning()
         //            .setDefaultFactory(ApproovDefaultMessageSigning.generateDefaultSignatureParametersFactory())
-        //);
+        //)
     }
 }
