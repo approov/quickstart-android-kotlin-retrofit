@@ -38,7 +38,7 @@ The subsequent steps of this guide show you how to provide better protection, ei
 
 ## ADD THE APPROOV DEPENDENCY
 
-he Approov integration is available via [`maven`](https://mvnrepository.com/repos/central). This allows inclusion into the project by simply specifying a dependency in the `gradle` files for the app.
+The Approov integration is available via [`maven`](https://mvnrepository.com/repos/central). This allows inclusion into the project by simply specifying a dependency in the `gradle` files for the app.
 
 The `approov-service-retrofit` dependency needs to be added as follows to the `app/build.gradle:38` at the app level:
 
@@ -129,7 +129,7 @@ This section shows how to add message signing as an additional layer of protecti
 
 ![Shapes V5 Endpoint](readme-images/shapes-v5-endpoint.png)
 
-2. Uncomment the message signing setup code in `io/approov/shapes/ShapesApp.kt`. This adds an interceptor extension to the ApproovService which adds the message signature to the request automatically.
+2. Uncomment the message signing setup code in `ShapesApp.kt`. This adds an interceptor extension to the ApproovService which adds the message signature to the request automatically.
 
 ![Add Interceptor Extension](readme-images/approov-msgsign-setup-code.png)
 
