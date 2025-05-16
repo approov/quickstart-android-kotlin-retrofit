@@ -1,7 +1,7 @@
 //
 // MIT License
 //
-// Copyright (c) 2016-present, Critical Blue Ltd.
+// Copyright (c) 2016-present, Approov Ltd.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files
 // (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
@@ -14,8 +14,28 @@
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
 // ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 // THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package io.approov.shapes
 
-import com.google.gson.annotations.SerializedName
+package io.approov.shapes.kotlin_retrofit
 
-class ShapeModel(@field:SerializedName("shape") var shape: String)
+import android.app.Application
+
+// *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
+//import io.approov.service.retrofit.ApproovService
+
+// *** UNCOMMENT THE LINE BELOW FOR APPROOV WITH INSTALLATION MESSAGE SIGNING ***
+//import io.approov.service.retrofit.ApproovDefaultMessageSigning;
+
+class ShapesApp: Application() {
+    override fun onCreate() {
+        super.onCreate()
+
+        // *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
+        //ApproovService.initialize(applicationContext, "<enter-your-config-string-here>")
+
+        // *** UNCOMMENT THE LINES BELOW FOR APPROOV WITH INSTALLATION MESSAGE SIGNING ***
+        //ApproovService.setApproovInterceptorExtensions(
+        //        ApproovDefaultMessageSigning()
+        //            .setDefaultFactory(ApproovDefaultMessageSigning.generateDefaultSignatureParametersFactory())
+        //)
+    }
+}

@@ -1,7 +1,7 @@
 //
 // MIT License
 //
-// Copyright (c) 2016-present, Critical Blue Ltd.
+// Copyright (c) 2016-present, Approov Ltd.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files
 // (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge,
@@ -14,18 +14,22 @@
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR
 // ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 // THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-package io.approov.shapes
 
-import android.app.Application
+package io.approov.shapes.kotlin_retrofit
 
-// *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
-//import io.approov.service.retrofit.ApproovService
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.HeaderMap
 
-class ShapesApp: Application() {
-    override fun onCreate() {
-        super.onCreate()
+interface ShapesService {
+    // *** COMMENT THE LINES BELOW WHEN USING APPROOV WITH API PROTECTION ***
+    @GET("/v1/shapes")
+    // *** UNCOMMENT THE LINES BELOW WHEN USING APPROOV WITH API PROTECTION ***
+    //@GET("/v3/shapes")
+    // *** UNCOMMENT THE LINES BELOW WHEN USING APPROOV WITH INSTALLATION MESSAGE SIGNING ***
+    //@GET("/v5/shapes")
+    fun getShape(@HeaderMap headers: Map<String, String>): Call<ShapeModel>
 
-        // *** UNCOMMENT THE LINE BELOW FOR APPROOV ***
-        //ApproovService.initialize(applicationContext, "<enter-your-config-string-here>")
-    }
+    @get:GET("/v1/hello")
+    val hello: Call<HelloModel>
 }

@@ -11,15 +11,16 @@ The Approov integration is available via [`maven`](https://mvnrepository.com/rep
 The `Maven` repository is already present in the gradle.build file so the only import you need to make is the actual service layer itself:
 
 ```
-implementation("io.approov:service.retrofit:3.3.0")
+implementation("io.approov:service.retrofit:3.4.2")
 ```
 
 Make sure you do a Gradle sync (by selecting `Sync Now` in the banner at the top of the modified `.gradle` file) after making these changes.
 
-This package is actually an open source wrapper layer that allows you to easily use Approov with `Retrofit`. This has a further dependency to the closed source [Approov SDK](https://github.com/approov/approov-android-sdk).
+This package is actually an open source wrapper layer that allows you to easily use Approov with `Retrofit`. T This has a further dependency to the closed source [Approov SDK](https://central.sonatype.com/artifact/io.approov/approov-android-sdk/3.4.1). In some cases you may need to also add this implementation to your dependencies list to avoid build errors:
 
-Make sure you do a Gradle sync (by selecting `Sync Now` in the banner at the top of the modified `.gradle` file) after making these changes.
-
+```
+implementation("io.approov:approov-android-sdk:3.4.1")
+```
 
 ## MANIFEST CHANGES
 The following app permissions need to be available in the manifest to use Approov:
@@ -29,7 +30,7 @@ The following app permissions need to be available in the manifest to use Approo
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-Note that the minimum SDK version you can use with the Approov package is 21 (Android 5.0). 
+Note that the minimum SDK version you can use with the Approov package is 23 (Android 6.0). 
 
 Please [read this](https://approov.io/docs/latest/approov-usage-documentation/#targeting-android-11-and-above) section of the reference documentation if targeting Android 11 (API level 30) or above.
 
